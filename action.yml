@@ -1,0 +1,8 @@
+name: "Fetch menu"
+description: "Fetch restaurant menus"
+outputs:
+  menu: # id of output
+    description: "Fetched and formatted menu, pushed to gist."
+runs:
+  using: "node16"
+  main: "index.js"
