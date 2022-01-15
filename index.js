@@ -4,22 +4,6 @@ import fetch from "node-fetch";
 import core from "@actions/core";
 import github from "@actions/github";
 
-//Github Action
-
-let promiseArray = [
-  _fetchKarkaRestaurants(),
-  _fetchUnicaRestaurants(),
-  _fetchSodexoRestaurants(),
-];
-let promiseAllArray = await Promise.all(promiseArray);
-let everyRestaurantData = promiseAllArray[0].concat(
-  promiseAllArray[1],
-  promiseAllArray[2]
-);
-
-const JsonRestaurantData = JSON.stringify(everyRestaurantData);
-core.setOutput("menu", JsonRestaurantData);
-
 //Karka restaurant data fetch and format functions
 
 const karkaWebsite = "https://www.karkafeerna.fi/fi/lounas";
@@ -453,3 +437,19 @@ const _createSodexoRestaurantMealObject = (meal) => {
   const mealObject = { name, price: meal_price, type };
   return mealObject;
 };
+
+//Github Action
+
+let promiseArray = [
+  _fetchKarkaRestaurants(),
+  _fetchUnicaRestaurants(),
+  _fetchSodexoRestaurants(),
+];
+let promiseAllArray = await Promise.all(promiseArray);
+let everyRestaurantData = promiseAllArray[0].concat(
+  promiseAllArray[1],
+  promiseAllArray[2]
+);
+
+const JsonRestaurantData = JSON.stringify(everyRestaurantData);
+core.setOutput("menu", JsonRestaurantData);
