@@ -1,0 +1,24 @@
+on: [push]
+  #schedule:
+      # * is a special character in YAML so you have to quote this string
+    #  - cron:  '* * * * *'
+
+jobs:
+  fetch_menu_job:
+    runs-on: ubuntu-latest
+    name: Fetches menu and updates gist
+    steps:
+      - name: Fetch menu step
+        id: fetchMenu
+        uses: ollitoivanen/OpiskelijalounasWebFetchAction@v0.4
+      - name: Get the output menu
+        run: |
+          curl \     
+            -X PUT \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"\
+            https://api.github.com/repos/ollitoivanen/OpiskelijalounasWebFetchAction/contents/all_restaurants_menu.json \
+            -d '{\
+              "files":"all_restaurants_menu.json",\
+              "description": "${{ steps.fetchMenu.outputs.menu }}"\
+            }' \
