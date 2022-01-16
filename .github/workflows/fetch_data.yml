@@ -16,7 +16,6 @@ jobs:
         run: |
           curl \     
             -X PUT "https://api.github.com/repos/ollitoivanen/OpiskelijalounasWebFetchAction/contents/all_restaurants_menu.json" \
-\
             -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"\
             -d '{\
