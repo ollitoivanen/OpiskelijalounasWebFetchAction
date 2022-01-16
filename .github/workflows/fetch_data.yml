@@ -12,3 +12,5 @@ jobs:
       - name: Fetch menu step
         id: fetchMenu
         uses: ollitoivanen/OpiskelijalounasWebFetchAction@v0.8.1.4
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}
