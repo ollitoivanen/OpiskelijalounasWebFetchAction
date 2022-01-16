@@ -13,4 +13,4 @@ jobs:
         id: fetchMenu
         uses: ollitoivanen/OpiskelijalounasWebFetchAction@v0.8.1.4
         with:
-          token: "${{ secrets.GITHUB_TOKEN }}"
+          authToken: "${{ secrets.GITHUB_TOKEN }}"
