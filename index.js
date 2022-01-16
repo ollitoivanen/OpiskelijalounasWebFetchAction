@@ -1,6 +1,6 @@
 //Åpiskelijalounas
 import fetch from "node-fetch";
-
+import base64 from "base-64";
 import core from "@actions/core";
 import github from "@actions/github";
 
@@ -450,6 +450,5 @@ let everyRestaurantData = promiseAllArray[0].concat(
   promiseAllArray[1],
   promiseAllArray[2]
 );
-
-const base64data = btoa(JSON.stringify(everyRestaurantData));
+var base64data = base64.encode(JSON.stringify(everyRestaurantData));
 core.setOutput("menu", base64data);
