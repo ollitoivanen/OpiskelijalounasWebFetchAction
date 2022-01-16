@@ -451,7 +451,7 @@ let everyRestaurantData = promiseAllArray[0].concat(
   promiseAllArray[1],
   promiseAllArray[2]
 );
-let bytes = utf8.encode(JSON.stringify(everyRestaurantData));
-let base64data = base64.encode(bytes);
-
-core.setOutput("menu", base64data);
+let objJsonB64 = Buffer.from(JSON.stringify(everyRestaurantData)).toString(
+  "base64"
+);
+core.setOutput("menu", objJsonB64);
