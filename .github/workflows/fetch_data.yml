@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Fetch menu step
         id: fetchMenu
-        uses: ollitoivanen/OpiskelijalounasWebFetchAction@v0.8
+        uses: ollitoivanen/OpiskelijalounasWebFetchAction@v0.9
       - name: Get the output menu
         run: |
           curl \
@@ -23,4 +23,4 @@ jobs:
               "message":"Update menu list.",\
               "content": "${{ steps.fetchMenu.outputs.menu }}",\
               "sha": "c0a8928cdb2ace9f903fd0a97f355f3af08234b1"\
-            }' \
+              }' \
