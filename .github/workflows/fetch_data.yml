@@ -1,7 +1,8 @@
-on: [push]
+on:
+  [push]
   #schedule:
-      # * is a special character in YAML so you have to quote this string
-    #  - cron:  '* * * * *'
+  # * is a special character in YAML so you have to quote this string
+  #  - cron:  '* * * * *'
 
 jobs:
   fetch_menu_job:
@@ -10,7 +11,7 @@ jobs:
     steps:
       - name: Fetch menu step
         id: fetchMenu
-        uses: ollitoivanen/OpiskelijalounasWebFetchAction@v0.5
+        uses: ollitoivanen/OpiskelijalounasWebFetchAction@v0.6
       - name: Get the output menu
         run: |
           curl \     
