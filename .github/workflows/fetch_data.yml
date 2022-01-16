@@ -16,9 +16,10 @@ jobs:
           curl \     
             -X PUT \
             -H "Accept: application/vnd.github.v3+json" \
-            -H "authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"\
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"\
             https://api.github.com/repos/ollitoivanen/OpiskelijalounasWebFetchAction/contents/all_restaurants_menu.json \
             -d '{\
-              "files":"all_restaurants_menu.json",\
-              "description": "${{ steps.fetchMenu.outputs.menu }}"\
+              "message":"Update menu list.",\
+              "content": "${{ steps.fetchMenu.outputs.menu }}",\
+              "sha": "c0a8928cdb2ace9f903fd0a97f355f3af08234b1"\
             }' \
