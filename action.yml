@@ -1,5 +1,9 @@
 name: "Fetch menu"
 description: "Fetch restaurant menus"
+inputs:
+  authToken:
+    description: "authToken"
+    required: true
 outputs:
   menu: # id of output
     description: "Fetched and formatted menu, pushed to gist.`"

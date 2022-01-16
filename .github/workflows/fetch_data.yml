@@ -11,16 +11,4 @@ jobs:
     steps:
       - name: Fetch menu step
         id: fetchMenu
-        uses: ollitoivanen/OpiskelijalounasWebFetchAction@v0.8.1.3
-      - name: Get the output menu
-        run: |
-          curl \
-            --request PUT \
-            --header "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            --header "Accept: application/vnd.github.v3+json" \
-            --url "https://api.github.com/repos/ollitoivanen/OpiskelijalounasWebFetchAction/contents/all_restaurants_menu.json" \ 
-            --data '{\
-              "message":"Update menu list.",\
-              "content": "${{ steps.fetchMenu.outputs.menu }}",\
-              "sha": "c0a8928cdb2ace9f903fd0a97f355f3af08234b1"\
-              }' \
+        uses: ollitoivanen/OpiskelijalounasWebFetchAction@v0.8.1.4

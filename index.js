@@ -5,6 +5,8 @@ import utf8 from "utf8";
 import core from "@actions/core";
 import github from "@actions/github";
 
+import { Octokit } from "@octokit/core";
+
 //Karka restaurant data fetch and format functions
 
 const karkaWebsite = "https://www.karkafeerna.fi/fi/lounas";
@@ -454,4 +456,17 @@ let everyRestaurantData = promiseAllArray[0].concat(
 let objJsonB64 = Buffer.from(JSON.stringify(everyRestaurantData)).toString(
   "base64"
 );
-core.setOutput("menu", JSON.stringify(everyRestaurantData));
+const token = core.getInput("authToken");
+
+const octokit = new Octokit({
+  auth: token,
+});
+
+await octokit.request(
+  "PUT /repos/ollitoivanen/OpiskelijalounasWebFetchAction/contents/all_restaurants_menu.json",
+  {
+    message: "Update menu list.",
+    content: objJsonB64,
+    sha: "c0a8928cdb2ace9f903fd0a97f355f3af08234b1",
+  }
+);
