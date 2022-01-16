@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Fetch menu step
         id: fetchMenu
-        uses: ollitoivanen/OpiskelijalounasWebFetchAction@v0.8.1.2
+        uses: ollitoivanen/OpiskelijalounasWebFetchAction@v0.8.1.3
       - name: Get the output menu
         run: |
           curl \
