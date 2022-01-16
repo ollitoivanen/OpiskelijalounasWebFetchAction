@@ -451,5 +451,5 @@ let everyRestaurantData = promiseAllArray[0].concat(
   promiseAllArray[2]
 );
 
-const JsonRestaurantData = JSON.stringify(everyRestaurantData);
-core.setOutput("menu", JsonRestaurantData);
+const base64data = btoa(JSON.stringify(everyRestaurantData));
+core.setOutput("menu", base64data);
