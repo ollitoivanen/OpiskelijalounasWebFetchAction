@@ -15,10 +15,10 @@ jobs:
       - name: Get the output menu
         run: |
           curl \     
-            -X PUT \
+            -X PUT "https://api.github.com/repos/ollitoivanen/OpiskelijalounasWebFetchAction/contents/all_restaurants_menu.json" \
+\
             -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"\
-            https://api.github.com/repos/ollitoivanen/OpiskelijalounasWebFetchAction/contents/all_restaurants_menu.json \
             -d '{\
               "message":"Update menu list.",\
               "content": "${{ steps.fetchMenu.outputs.menu }}",\
