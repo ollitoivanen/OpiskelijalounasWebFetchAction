@@ -461,12 +461,14 @@ const token = core.getInput("authToken");
 const octokit = new Octokit({
   auth: token,
 });
-
+const menuFile = await octokit.request(
+  "GET /repos/ollitoivanen/OpiskelijalounasWebFetchAction/contents/all_restaurants_menu.json"
+);
 await octokit.request(
   "PUT /repos/ollitoivanen/OpiskelijalounasWebFetchAction/contents/all_restaurants_menu.json",
   {
     message: "Update menu list.",
     content: objJsonB64,
-    sha: "c0a8928cdb2ace9f903fd0a97f355f3af08234b1",
+    sha: menuFile.data.sha,
   }
 );
