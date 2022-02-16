@@ -1,9 +1,6 @@
 //Åpiskelijalounas
 import fetch from "node-fetch";
-import base64 from "base-64";
-import utf8 from "utf8";
 import core from "@actions/core";
-import github from "@actions/github";
 
 import { Octokit } from "@octokit/core";
 
