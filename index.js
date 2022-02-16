@@ -139,7 +139,7 @@ const _checkIfKarkaLunchServed = (karkaRestaurant) => {
 const _getKarkaRestaurantOpenHours = (karkaRestaurant) => {
   const indexOfStartOfRestaurantOpenHours = karkaRestaurant.indexOf("<p>") + 3;
   const indexOfEndOfRestaurantOpenHours = karkaRestaurant.indexOf("</p>");
-  const br = "<br/>";
+  const br = "<br";
   const includesBr = karkaRestaurant.includes(br);
 
   if (
