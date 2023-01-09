@@ -4,18 +4,18 @@ import core from "@actions/core";
 
 import { Octokit } from "@octokit/core";
 
-//Karka restaurant data fetch and format functions
+//Kårkafeerna restaurant data fetch and format functions
 
 const karkaWebsite = "https://www.karkafeerna.fi/fi/lounas";
 
 //Groups 1-6
 const karkaPriceGroups = [
-  "4,00 - 5,35€",
-  "2,70€",
-  "2,70€",
-  "2,40€",
-  "2,70",
-  "1,50 - 3,00€",
+  "4,25 - 15,00€",
+  "2,95€",
+  "2,95€",
+  "2,65€",
+  "2,95€",
+  "1,50€",
 ];
 
 const karkaMealTypes = ["Vegaaninen", "Kasvis", "Lounas"];
@@ -44,7 +44,8 @@ const _fetchKarkaRestaurants = async () => {
     if (openRestaurantsArray === undefined) return [];
     const readyRestaurantsArray =
       _createKarkaRestaurantsArray(openRestaurantsArray);
-    return await readyRestaurantsArray;
+      console.log(readyRestaurantsArray)
+    return readyRestaurantsArray;
   } catch (e) {
     console.log(e);
     return [];
@@ -136,8 +137,7 @@ const _checkIfKarkaLunchServed = (karkaRestaurant) => {
 const _getKarkaRestaurantOpenHours = (karkaRestaurant) => {
   const indexOfStartOfRestaurantOpenHours = karkaRestaurant.indexOf("<p>") + 3;
   const indexOfEndOfRestaurantOpenHours = karkaRestaurant.indexOf("</p>");
-  const br = "<br";
-  const includesBr = karkaRestaurant.includes(br);
+  
 
   if (
     indexOfStartOfRestaurantOpenHours === -1 ||
@@ -154,6 +154,9 @@ const _getKarkaRestaurantOpenHours = (karkaRestaurant) => {
   if (restaurantOpenHours == "suljettu toistaiseksi") {
     return;
   }
+
+  const br = "<br/>";
+  const includesBr = restaurantOpenHours.includes(br);
 
   if (includesBr) {
     restaurantOpenHours = restaurantOpenHours.split(br).join("\n");
