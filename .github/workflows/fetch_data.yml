@@ -1,4 +1,7 @@
-on: [push]
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron: "2 * * * *"
 
 jobs:
   fetch_menu_job:
@@ -7,6 +10,6 @@ jobs:
     steps:
       - name: Fetch menu step
         id: fetchMenu
-        uses: ollitoivanen/OpiskelijalounasWebFetchAction@v0.8.4
+        uses: ollitoivanen/OpiskelijalounasWebFetchAction@v0.8.5
         with:
           authToken: "${{ secrets.GITHUB_TOKEN }}"
