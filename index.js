@@ -44,7 +44,6 @@ const _fetchKarkaRestaurants = async () => {
     if (openRestaurantsArray === undefined) return [];
     const readyRestaurantsArray =
       _createKarkaRestaurantsArray(openRestaurantsArray);
-      console.log(readyRestaurantsArray)
     return readyRestaurantsArray;
   } catch (e) {
     console.log(e);
